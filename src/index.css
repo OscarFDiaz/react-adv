@@ -25,6 +25,7 @@ nav {
   overflow-y: scroll;
   text-align: center;
   width: 250px;
+  overflow-y: hidden;
 }
 nav ul {
   align-items: center;
@@ -40,12 +41,12 @@ nav li {
 }
 
 nav li a {
-  color: white;
+  color: grey;
   font-size: 1.2rem;
   text-decoration: none;
 }
 
 .nav-active {
-  color: grey;
+  color: white;
   transition: all 0.3s ease-out;
 }
