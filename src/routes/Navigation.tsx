@@ -1,7 +1,7 @@
 import { BrowserRouter, NavLink, Routes, Route, Navigate } from 'react-router-dom';
 import logo from '../assets/react.svg';
 
-export const Navigation = ({ children }) => {
+export const Navigation = () => {
   return (
     <BrowserRouter>
       <div className="main-layout">
