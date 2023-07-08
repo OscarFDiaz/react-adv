@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Product, onChangeArgs } from '../interfaces/interfaces';
 
 interface useProductArgs {
@@ -10,14 +10,7 @@ interface useProductArgs {
 export const useProduct = ({ onChange, product, value = 0 }: useProductArgs) => {
   const [counter, setCounter] = useState(value);
 
-  const isControlled = useRef<boolean>(!!onChange);
-
   const increaseBy = (value: number) => {
-    if (isControlled.current) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return onChange!({ count: value, product });
-    }
-
     const newValue = Math.max(counter + value, 0);
     setCounter(newValue);
 

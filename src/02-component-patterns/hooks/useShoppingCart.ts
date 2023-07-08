@@ -11,33 +11,17 @@ export const useShoppingCart = () => {
 
   const onProductCountChange = ({ count, product }: onChangeProprs) => {
     setShoppingCart((oldShoppingCart) => {
-      const productInCart: ProductInCart = oldShoppingCart[product.id] || {
-        ...product,
-        count: 0,
-      };
-
-      // Update counter
-      if (Math.max(productInCart.count + count, 0) > 0) {
-        productInCart.count += count;
-        return { ...oldShoppingCart, [productInCart.id]: productInCart };
+      // NOT CONTROLLED
+      if (count === 0) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+        return rest;
       }
 
-      // Delete product
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-      return rest;
-
-      // NOT CONTROLLED
-      // if (count === 0) {
-      //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      //   const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-      //   return rest;
-      // }
-
-      // return {
-      //   ...oldShoppingCart,
-      //   [product.id]: { ...product, count },
-      // };
+      return {
+        ...oldShoppingCart,
+        [product.id]: { ...product, count },
+      };
     });
   };
 
